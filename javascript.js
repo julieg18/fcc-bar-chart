@@ -65,7 +65,7 @@ req.onload = function() {
       tooltip
       .style("visibility", "hidden");
     });
-}
+};
 
 
 
