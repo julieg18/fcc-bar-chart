@@ -8,8 +8,21 @@ rect {
   fill: #500b0b;
 }
 
+rect:hover {
+  fill: #8b1414;
+}
+
 svg {
   margin-left: 30px;
+}
+
+#tooltip {
+  position: absolute;
+  background-color: #ffffff;
+  height: 40px;
+  width: 160px;
+  visibility: hidden;
+  padding: 10px;
 }
 
 #page {

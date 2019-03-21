@@ -6,6 +6,7 @@ let chartHeight = 400;
 let width = chartWidth + xMargin * 2;
 let height = chartHeight + yMargin * 2;
 let barWidth = chartWidth/275;
+let tooltip = d3.select("#tooltip");
 
 const svg = d3.select("svg")
   .attr("height", height)
@@ -51,7 +52,22 @@ req.onload = function() {
     .attr("x", (d) => xScale(new Date(d[0])))
     .attr("y", (d) => yScale(d[1]))
     .attr("width", barWidth)
-    .attr("height", (d) => height - yScale(d[1]) - yMargin * 2);
+    .attr("height", (d) => height - yScale(d[1]) - yMargin * 2)
+    .on("mouseover", (d) => {
+      tooltip
+        .style("visibility", "visible")
+        .html(d[0] + "<br/>" + d[1] + " (in billions)")
+        .attr("data-date", d[0])
+        .style("top", (event.pageY-10) + "px")
+        .style("left", (event.pageX + 10) + "px");
+    })
+    .on("mouseout", () => {
+      tooltip
+      .style("visibility", "hidden");
+    });
 }
+
+
+
 
 
